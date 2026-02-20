@@ -35,9 +35,13 @@ const preview: Preview = {
             [
               "Overview",
               "stIllustration",
+              "stIllustrationImage",
               "stRadioGroup",
               "stPicklistPathLWC",
               "stFieldsetContainer",
+              "stLwcCard",
+              "stBetaBar",
+              "stLastModifiers",
             ],
             "Financial & Budget",
             "Inventory & Asset",

@@ -37,7 +37,7 @@ interface CategoryProgress {
 const CATEGORIES: CategoryProgress[] = [
   { name: "Data Display & Grid",    total: 8,  built: 6, phase: 1, codaAnchor: "Table-6_tu4NBnpr", note: "6 reusable · 2 domain-specific" },
   { name: "Schedule & Timeline",    total: 7,  built: 0, phase: 2, codaAnchor: "suHonxkL" },
-  { name: "UI/UX Building Blocks",  total: 15, built: 4, phase: 2, codaAnchor: "suHonxkL" },
+  { name: "UI/UX Building Blocks",  total: 14, built: 8, phase: 2, codaAnchor: "suHonxkL", note: "8 built · 6 planned" },
   { name: "Financial & Budget",     total: 6,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
   { name: "Inventory & Asset",      total: 5,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
   { name: "Files",                  total: 4,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
@@ -56,7 +56,7 @@ const totalPct        = Math.round((totalBuilt / totalComponents) * 100);
 
 const PHASES = [
   { n: 1, label: "Phase 1 · Data Display",   built: 6,  total: 8,  color: T.accent  },
-  { n: 2, label: "Phase 2 · Schedule & UI",  built: 4,  total: 22, color: "#B36CF5" },
+  { n: 2, label: "Phase 2 · Schedule & UI",  built: 8,  total: 21, color: "#B36CF5" },
   { n: 3, label: "Phase 3 · Domain-Specific",built: 0,  total: 18, color: T.orange  },
   { n: 4, label: "Phase 4 · Workflows & Maps",built: 0, total: 29, color: T.muted   },
 ];
@@ -84,8 +84,8 @@ const INSIGHTS = [
   },
   {
     emoji: "📊",
-    title: "stEditableDatatable is the true workhorse",
-    body: "~38 unique LWC consumers vs stLwcDataTable's ~35. The editable variant is actually the most-used component in the codebase — not the read-only one.",
+    title: "stLwcDataTable is the most-referenced component",
+    body: "GitHub code search shows ~69 file references for stLwcDataTable vs ~46 for stEditableDatatable. The read-only table is actually more widely used than the editable variant.",
   },
   {
     emoji: "💡",
@@ -170,7 +170,7 @@ const IntroductionPage: React.FC = () => (
                 {totalPct}%
               </div>
               <div style={{ fontSize: "0.7rem", color: T.muted, marginTop: "0.2rem" }}>
-                Phase 1 of 4 complete
+                Phase 2 in progress
               </div>
             </div>
           </div>
@@ -325,7 +325,7 @@ const IntroductionPage: React.FC = () => (
       }}>
         <img src={siitetrackerLogo} alt="Sitetracker" style={{ height: "18px", opacity: 0.35 }} />
         <div style={{ fontSize: "0.7rem", color: T.dim }}>
-          Phase 1 · Feb 2026 · {totalBuilt}/{totalComponents} components documented
+          Phase 2 · Feb 2026 · {totalBuilt}/{totalComponents} components documented
         </div>
         <div style={{ display: "flex", gap: "1.25rem" }}>
           {[

@@ -20,14 +20,15 @@ const meta = {
           '</ul>' +
           '<h4>Supported features</h4>' +
           '<ul>' +
-          '<li>3 SLDS-packaged SVG illustrations (assistant, events, tasks)</li>' +
-          '<li>4 additional inline SVG variants (no-access, no-connection, no-data, error)</li>' +
+          '<li><strong>3 types use real SLDS SVGs</strong> from the npm package: assistant, events, tasks</li>' +
+          '<li><strong>4 types use custom fallback artwork</strong> (<code>no-access</code>, <code>no-connection</code>, <code>no-data</code>, <code>error</code>) — these are valid SLDS illustration type names but their actual Salesforce SVG files are not in the npm package. The artwork shown is a placeholder approximation.</li>' +
           '<li>3 size variants: small, medium (default), large</li>' +
           '<li>Configurable heading and body text</li>' +
           '<li>ARIA-hidden illustration images (text conveys meaning)</li>' +
           '</ul>' +
+          '<p>&#128279; <a href="https://www.lightningdesignsystem.com/components/illustration/" target="_blank" rel="noopener noreferrer">Full SLDS Illustration reference &rarr;</a></p>' +
           '<h4>Usage in Phase 1</h4>' +
-          '<p>This component is the empty-state fallback across all 6 Data Display components. When a data table has no records, <code>c-st-illustration</code> is rendered with type <code>desert</code> (custom SVG in LWC) and contextual text.</p>',
+          '<p>This component is the empty-state fallback across all 6 Data Display components. When a data table has no records, <code>c-st-illustration</code> is rendered with contextual heading and body text.</p>',
       },
     },
   },
@@ -114,7 +115,7 @@ export const EmptyTasks: Story = {
 };
 
 export const NoAccess: Story = {
-  name: "No Access",
+  name: "No Access (custom fallback)",
   args: {
     type: "no-access",
     heading: "Access Restricted",
@@ -123,13 +124,13 @@ export const NoAccess: Story = {
   },
   parameters: {
     docs: {
-      description: { story: "Displayed when a user lacks the object or field permission to see a component." },
+      description: { story: "Displayed when a user lacks object or field permission. Note: the artwork shown is a custom fallback — the real SLDS <code>no-access</code> SVG is not in the npm package. <a href=\"https://www.lightningdesignsystem.com/components/illustration/\" target=\"_blank\">See the real design &rarr;</a>" },
     },
   },
 };
 
 export const ErrorState: Story = {
-  name: "Error State",
+  name: "Error State (custom fallback)",
   args: {
     type: "error",
     heading: "Something Went Wrong",
@@ -138,7 +139,7 @@ export const ErrorState: Story = {
   },
   parameters: {
     docs: {
-      description: { story: "Generic error fallback rendered when an API call or data load fails." },
+      description: { story: "Generic error fallback rendered when an API call or data load fails. Note: custom fallback artwork — the real SLDS <code>error</code> SVG is not in the npm package. <a href=\"https://www.lightningdesignsystem.com/components/illustration/\" target=\"_blank\">See the real design &rarr;</a>" },
     },
   },
 };

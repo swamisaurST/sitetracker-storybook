@@ -5,11 +5,15 @@ import type { IllustrationProps, IllustrationType } from "./types";
 // via the staticDirs config in .storybook/main.ts
 const SLDS_ILLUS_PATH = "/assets/images/illustrations";
 
-// Inline SVG fallbacks for types not in the SLDS npm package
+// Custom fallback SVGs for SLDS illustration types whose artwork is NOT in the npm package.
+// These are placeholder approximations only — NOT the official Salesforce designs.
+// The real artwork lives in Salesforce Static Resources inside an org.
+// Reference: https://www.lightningdesignsystem.com/components/illustration/
 const INLINE_SVGS: Record<string, React.ReactElement> = {
   "no-access": (
     <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
       <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
+      <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
       <rect x="70" y="40" width="60" height="70" rx="8" fill="#C9C9C9" />
       <rect x="80" y="55" width="40" height="40" rx="4" fill="#F3F3F3" />
       <circle cx="100" cy="75" r="10" fill="#C9C9C9" />
@@ -21,6 +25,7 @@ const INLINE_SVGS: Record<string, React.ReactElement> = {
   "no-connection": (
     <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
       <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
+      <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
       <path d="M40 80 Q70 40 100 70 Q130 40 160 80" stroke="#C9C9C9" strokeWidth="3" fill="none" strokeLinecap="round" />
       <path d="M55 95 Q80 65 100 85 Q120 65 145 95" stroke="#C9C9C9" strokeWidth="3" fill="none" strokeLinecap="round" />
       <path d="M75 110 Q90 95 100 105 Q110 95 125 110" stroke="#C9C9C9" strokeWidth="3" fill="none" strokeLinecap="round" />
@@ -31,6 +36,7 @@ const INLINE_SVGS: Record<string, React.ReactElement> = {
   "no-data": (
     <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
       <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
+      <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
       <rect x="45" y="50" width="110" height="70" rx="6" fill="#F3F3F3" stroke="#D8D8D8" />
       <rect x="55" y="62" width="90" height="8" rx="2" fill="#E5E5E5" />
       <rect x="55" y="78" width="70" height="8" rx="2" fill="#EEE" />
@@ -42,6 +48,7 @@ const INLINE_SVGS: Record<string, React.ReactElement> = {
   "error": (
     <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
       <ellipse cx="100" cy="135" rx="75" ry="13" fill="#E5E5E5" />
+      <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
       <polygon points="100,25 165,130 35,130" fill="#FDF3E3" stroke="#F39C12" strokeWidth="2" />
       <rect x="96" y="65" width="8" height="35" rx="2" fill="#F39C12" />
       <rect x="96" y="108" width="8" height="8" rx="2" fill="#F39C12" />

@@ -30,19 +30,22 @@ export interface CategoryComponent {
   status: ComponentStatus;
   reusable: boolean;
   usages?: number;
-  storyPath?: string; // e.g. "Categories/Data Display & Grid/stLwcDataTable"
+  /** Full Storybook title path, e.g. "Categories/Data Display & Grid/stLwcDataTable" */
+  storyPath?: string;
+  /** Story export slug to link to. Defaults to "default". Use e.g. "read-mode" for FieldsetContainer. */
+  storySlug?: string;
   githubPath?: string;
   pattern?: string;
 }
 
-function storyUrl(storyPath: string): string {
+function storyUrl(storyPath: string, storySlug = "default"): string {
   const id = storyPath
     .toLowerCase()
-    .replace(/[&]/g, "")
+    .replace(/[&·]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
-  return `/?path=/story/${id}--default`;
+  return `/?path=/story/${id}--${storySlug}`;
 }
 
 export interface CategoryPageProps {
@@ -156,7 +159,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
           }}>
             <span>Component</span>
             <span>Description</span>
-            <span style={{ textAlign: "center" }}>Usages</span>
+            <span style={{ textAlign: "center" }}>Refs</span>
             <span style={{ textAlign: "center" }}>Status</span>
           </div>
 
@@ -178,7 +181,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                 {/* Name column */}
                 <div>
                   {comp.storyPath ? (
-                    <a href={storyUrl(comp.storyPath)}
+                    <a href={storyUrl(comp.storyPath, comp.storySlug)}
                       style={{ fontWeight: 600, fontSize: "0.82rem", color: T.accent, marginBottom: "0.2rem", display: "block", textDecoration: "none" }}>
                       {comp.label} →
                     </a>
@@ -203,7 +206,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                   {comp.description}
                 </div>
 
-                {/* Usages */}
+                {/* Usages — GitHub code search hit count across all file types in sitetracker/strk@preprod */}
                 <div style={{ textAlign: "center", fontSize: "0.8rem", color: T.muted, fontWeight: 500, paddingTop: "2px" }}>
                   {comp.usages !== undefined ? `~${comp.usages}` : "—"}
                 </div>

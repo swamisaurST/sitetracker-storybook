@@ -14,7 +14,7 @@ const meta = {
         component: [
           "<h3>stEditableTreeGrid — ST Editable Tree Grid</h3>",
           "<p>Sitetracker's most powerful and complex data component. A fully custom hierarchical table engine built with <strong>Light DOM</strong> (<code>renderMode: light</code>), allowing deep CSS penetration and external event attachment that Shadow DOM prevents. It is <strong>not</strong> based on <code>lightning-datatable</code> or <code>lightning-tree-grid</code>.</p>",
-          "<p><strong>For Use In:</strong> Complex editable hierarchies &mdash; Project Schedules, Gantt rows, Permits, Milestones &nbsp;·&nbsp; <strong>~22 LWC consumers</strong></p>",
+          "<p><strong>For Use In:</strong> Complex editable hierarchies &mdash; Project Schedules, Gantt rows, Permits, Milestones &nbsp;·&nbsp; <strong>~41 file references in source</strong></p>",
           "<p><strong>Architecture:</strong> Light DOM container &rarr; custom header rows + custom editable cell rows + <code>c-st-paginator</code> &nbsp;·&nbsp; <strong>Pattern D</strong> (most complex)</p>",
           "<p><strong>Why Light DOM?</strong> The custom engine needs to: (1) allow 3rd-party drag-and-drop on rows, (2) expose cell <code>input</code> elements to parent CSS for validation theming, and (3) dispatch DOM events that cross component boundaries without <code>composed: true</code> overhead.</p>",
           "<p><strong>Supported features:</strong></p>",

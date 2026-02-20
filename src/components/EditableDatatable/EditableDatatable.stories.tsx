@@ -14,8 +14,8 @@ const meta = {
         component: [
           "<h3>stEditableDatatable — ST Editable Datatable</h3>",
           "<p>Sitetracker's most widely used data component. An editable table inside a card that supports batch inline editing: modify multiple cells across multiple rows, then commit as a single Save operation.</p>",
-          "<p><strong>For Use In:</strong> Any Sitetracker record page requiring inline record editing &nbsp;·&nbsp; <strong>~38 LWC consumers</strong> (highest in the library)</p>",
-          "<p><strong>Architecture:</strong> <code>c-st-lwc-card</code> &rarr; <code>c-st-editable-datatable-base</code> + <code>c-st-manage-columns</code> + <code>c-st-pps-toolbar-search</code> + <code>c-st-stencil-datatable</code> &nbsp;·&nbsp; <strong>Pattern B</strong></p>",
+          "<p><strong>For Use In:</strong> Any Sitetracker record page requiring inline record editing &nbsp;·&nbsp; <strong>~46 file references in source</strong></p>",
+          "<p><strong>Architecture:</strong> <code>c-st-lwc-card</code> &rarr; <code>c-st-editable-datatable-base</code> + <code>c-st-manage-columns</code> + <code>c-st-pps-toolbar-search</code> + <code>c-st-live-refresh-poller</code> &nbsp;·&nbsp; <strong>Pattern B</strong></p>",
           "<p><strong>Supported features:</strong></p>",
           "<ul>",
           "<li>Batch inline editing &mdash; edit multiple cells, then Save or Cancel as a unit</li>",

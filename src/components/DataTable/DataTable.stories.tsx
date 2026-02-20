@@ -19,8 +19,8 @@ const meta = {
         component: [
           "<h3>stLwcDataTable — ST Data Table</h3>",
           "<p>A configurable data table for displaying Salesforce records with pagination, sorting, filtering, and CRUD actions. The foundational read-optimised data display component in the Sitetracker library.</p>",
-          "<p><strong>For Use In:</strong> All Sitetracker record pages requiring tabular data display &nbsp;·&nbsp; <strong>~35 LWC consumers</strong></p>",
-          "<p><strong>Architecture:</strong> Container &rarr; <code>c-custom-data-table</code> (extends <code>lightning-datatable</code>) + <code>c-st-paginator</code> + <code>c-st-illustration</code> &nbsp;·&nbsp; <strong>Pattern A</strong></p>",
+          "<p><strong>For Use In:</strong> All Sitetracker record pages requiring tabular data display &nbsp;·&nbsp; <strong>~69 file references in source</strong></p>",
+          "<p><strong>Architecture:</strong> Container &rarr; <code>c-custom-data-table</code> (extends <code>lightning-datatable</code>) + <code>c-st-paginator</code> + <code>c-st-illustration</code> + <code>c-st-page-layout</code> &nbsp;·&nbsp; <strong>Pattern A</strong></p>",
           "<p><strong>Supported features:</strong></p>",
           "<ul>",
           "<li><strong>Column types:</strong> text, currency, percent, number, date, boolean, email, phone, url, reference, picklist, customCurrency, customNumber, customStatusBadge, customLinkWithIcon, customAvatar, treeLink (11 custom types beyond lightning-datatable)</li>",

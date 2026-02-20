@@ -13,7 +13,7 @@ const meta = {
         component: [
           "<h3>stTreeGrid — ST Tree Grid</h3>",
           "<p>A hierarchical data grid for displaying parent-child records in a collapsible tree structure. Wraps Salesforce's <code>lightning-tree-grid</code> inside an <code>st-lwc-card</code> shell with search, expand controls, row actions, and optional column summaries.</p>",
-          "<p><strong>For Use In:</strong> Record pages requiring parent-child hierarchical data &nbsp;·&nbsp; <strong>3 LWC consumers</strong></p>",
+          "<p><strong>For Use In:</strong> Record pages requiring parent-child hierarchical data &nbsp;·&nbsp; <strong>~6 file references in source</strong></p>",
           "<p><strong>Architecture:</strong> <code>c-st-lwc-card</code> &rarr; <code>lightning-tree-grid</code> + search input + button-group &nbsp;·&nbsp; <strong>Pattern C</strong></p>",
           "<p><strong>Hierarchy Modes:</strong></p>",
           "<ul>",
