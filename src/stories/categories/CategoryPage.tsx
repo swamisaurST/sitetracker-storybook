@@ -47,14 +47,15 @@ function storyId(storyPath: string): string {
     .replace(/^-|-$/g, "");
 }
 
-// Navigate the Storybook shell (parent window) to a story.
+// Navigate the Storybook shell (parent window) to a component's docs page.
+// Docs URL format: ?path=/docs/<story-id>  (no --slug suffix)
 // Using window.parent.location ensures the link works in both local dev
 // (localhost:6006) and on GitHub Pages (/sitetracker-storybook/) without
 // hard-coding the base path.
-function navigateToStory(storyPath: string, storySlug = "default") {
+function navigateToStory(storyPath: string, _storySlug?: string) {
   const id = storyId(storyPath);
   const base = window.parent.location.pathname;
-  window.parent.location.href = `${base}?path=/story/${id}--${storySlug}`;
+  window.parent.location.href = `${base}?path=/docs/${id}`;
 }
 
 export interface CategoryPageProps {
