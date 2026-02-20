@@ -30,7 +30,18 @@ const meta = {
           '<li>disabled (shown as read-only text even in edit mode)</li>' +
           '</ul>' +
           '<h4>Notes</h4>' +
-          '<p>In production LWC, field values come from Apex via <code>@wire(getRecord)</code>. In Storybook, all values are passed as static props and the <code>onSave</code> callback receives the mutated values object.</p>',
+          '<p>In production LWC, field values come from Apex via wire adapters. In Storybook, values are passed as static props and <code>onSave</code> receives the mutated values object.</p>' +
+          '<h4>Real LWC API (sitetracker/strk@preprod)</h4>' +
+          '<p>The real component is fully wire-driven via two Apex methods. Our Storybook passes fields directly as props instead:</p>' +
+          '<ul>' +
+          '<li><code>fieldset</code> (string) — API name of the fieldset (e.g. "ContactDetails"). Apex resolves the actual fields.</li>' +
+          '<li><code>recordId</code> — Salesforce record ID. Wire fetches current values.</li>' +
+          '<li><code>objectName</code> — alternative to recordId; loads by object name instead.</li>' +
+          '<li><code>editable</code> — real prop name (we use <code>isEditable</code>)</li>' +
+          '<li><code>editMode</code> (boolean, default false) — open in edit mode</li>' +
+          '<li><code>embedded</code> (boolean) — removes card chrome for embedding in other cards</li>' +
+          '<li><code>columns</code> — number of columns for field layout</li>' +
+          '</ul>',
       },
     },
   },

@@ -28,7 +28,18 @@ const meta = {
           '</ul>' +
           '<p>&#128279; <a href="https://www.lightningdesignsystem.com/components/illustration/" target="_blank" rel="noopener noreferrer">Full SLDS Illustration reference &rarr;</a></p>' +
           '<h4>Usage in Phase 1</h4>' +
-          '<p>This component is the empty-state fallback across all 6 Data Display components. When a data table has no records, <code>c-st-illustration</code> is rendered with contextual heading and body text.</p>',
+          '<p>This component is the empty-state fallback across all 6 Data Display components. When a data table has no records, <code>c-st-illustration</code> is rendered with contextual heading and body text.</p>' +
+          '<h4>Real LWC API (sitetracker/strk@preprod)</h4>' +
+          '<p>The actual <code>stIllustration</code> LWC (based on <a href="https://github.com/kacrouse/lwc-illustration" target="_blank">lwc-illustration</a> by Kyle Crouse, MIT licence) has these props:</p>' +
+          '<ul>' +
+          '<li><code>imageName</code> — format: "category:identifier" (e.g. "no_data:desert", "error:no_access"). Our React prop is <code>type</code>.</li>' +
+          '<li><code>messageBody</code> — body text. Our React prop is <code>body</code>.</li>' +
+          '<li><code>heading</code> — same ✅</li>' +
+          '<li><code>imageSize</code> — "small" | "large" only (default "small"). Our React version adds "medium".</li>' +
+          '<li><code>textOnly</code> (boolean) — hide the image, show only text (not in our component)</li>' +
+          '<li><code>headingClass</code> — SLDS text class override</li>' +
+          '<li>Slot: <code>messageBody</code> — rich text override for body. Slot: <code>actionButton</code></li>' +
+          '</ul>',
       },
     },
   },
@@ -40,10 +51,14 @@ const meta = {
         "empty-state-assistant",
         "empty-state-events",
         "empty-state-tasks",
-        "no-access",
-        "no-connection",
-        "no-data",
-        "error",
+        "error:no_access",
+        "error:no_connection",
+        "error:page_not_available",
+        "no_data:desert",
+        "no_data:open_road",
+        "info:going_camping",
+        "misc:no_content",
+        "misc:gone_fishing",
       ],
       table: { category: "Content" },
     },
@@ -115,31 +130,31 @@ export const EmptyTasks: Story = {
 };
 
 export const NoAccess: Story = {
-  name: "No Access (custom fallback)",
+  name: "error:no_access (custom fallback)",
   args: {
-    type: "no-access",
+    type: "error:no_access",
     heading: "Access Restricted",
     body: "You don't have permission to view this content. Contact your Salesforce administrator.",
     size: "medium",
   },
   parameters: {
     docs: {
-      description: { story: "Displayed when a user lacks object or field permission. Note: the artwork shown is a custom fallback — the real SLDS <code>no-access</code> SVG is not in the npm package. <a href=\"https://www.lightningdesignsystem.com/components/illustration/\" target=\"_blank\">See the real design &rarr;</a>" },
+      description: { story: "Real image name: <code>error:no_access</code>. Custom fallback artwork — the SVG lives in Salesforce Static Resources in the org. <a href=\"https://www.lightningdesignsystem.com/components/illustration/\" target=\"_blank\">See the SLDS reference &rarr;</a>" },
     },
   },
 };
 
-export const ErrorState: Story = {
-  name: "Error State (custom fallback)",
+export const Desert: Story = {
+  name: "no_data:desert (custom fallback)",
   args: {
-    type: "error",
-    heading: "Something Went Wrong",
-    body: "We encountered an unexpected error. Refresh the page or contact support if the issue persists.",
+    type: "no_data:desert",
+    heading: "No Records Found",
+    body: "There are no records to display. Try a different filter or create a new record.",
     size: "medium",
   },
   parameters: {
     docs: {
-      description: { story: "Generic error fallback rendered when an API call or data load fails. Note: custom fallback artwork — the real SLDS <code>error</code> SVG is not in the npm package. <a href=\"https://www.lightningdesignsystem.com/components/illustration/\" target=\"_blank\">See the real design &rarr;</a>" },
+      description: { story: "Real image name: <code>no_data:desert</code>. Custom fallback artwork." },
     },
   },
 };
@@ -178,7 +193,7 @@ export const NoDataGrid: Story = {
       style={{ padding: "3rem 2rem", display: "flex", justifyContent: "center", background: "#fff", minWidth: "480px" }}
     >
       <Illustration
-        type="no-data"
+        type="misc:no_content"
         heading="No Records Found"
         body="No records match your current filters. Try adjusting the search criteria or clearing active filters."
         size="medium"

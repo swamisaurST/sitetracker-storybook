@@ -23,8 +23,19 @@ const meta = {
           '<li>Inner padding toggle (<code>slds-card__body_inner</code>)</li>' +
           '<li>Border toggle for embedded/borderless contexts</li>' +
           '</ul>' +
-          '<h4>Notes</h4>' +
-          '<p>The card does not manage its own data — it is purely a layout wrapper. Use it to wrap <code>stEditableDatatable</code>, <code>stFieldsetContainer</code>, or any other component that needs a titled, bordered container.</p>',
+          '<h4>Real LWC API (sitetracker/strk@preprod)</h4>' +
+          '<p>The actual <code>stLwcCard</code> uses <code>lightning-icon</code> (not a sprite directly). Key real props:</p>' +
+          '<ul>' +
+          '<li><code>iconName</code> — SLDS icon name string (e.g. "standard:account"), not a variant enum</li>' +
+          '<li><code>iconUrl</code>, <code>iconStyle</code>, <code>iconSize</code> (default "medium") — icon customisation</li>' +
+          '<li><code>header</code> — card title (we call it <code>title</code> in our React prop)</li>' +
+          '<li><code>subHeader</code> — subtitle below the header</li>' +
+          '<li><code>status</code> — array of status badge objects [{status, theme, customLabel}]</li>' +
+          '<li><code>showBorder</code>, <code>removePadding</code>, <code>showAsBlock</code>, <code>showDarkendHeader</code>, <code>hideCard</code></li>' +
+          '<li><code>actionSlotStyle</code>, <code>headerStyle</code>, <code>cardBodyClasses</code></li>' +
+          '<li>Confirmed slots: <code>customheader</code>, <code>actions</code>, plus default body slot</li>' +
+          '</ul>' +
+          '<p>Our Storybook uses simplified React props for demo purposes. The real component renders icons via <code>lightning-icon icon-name={iconName}</code> — we use the SLDS sprite directly instead.</p>',
       },
     },
   },

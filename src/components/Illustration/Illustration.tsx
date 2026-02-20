@@ -10,7 +10,7 @@ const SLDS_ILLUS_PATH = "/assets/images/illustrations";
 // The real artwork lives in Salesforce Static Resources inside an org.
 // Reference: https://www.lightningdesignsystem.com/components/illustration/
 const INLINE_SVGS: Record<string, React.ReactElement> = {
-  "no-access": (
+  "error:no_access": (
     <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
       <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
       <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
@@ -22,7 +22,7 @@ const INLINE_SVGS: Record<string, React.ReactElement> = {
       <rect x="94" y="27" width="12" height="6" rx="1" fill="white" />
     </svg>
   ),
-  "no-connection": (
+  "error:no_connection": (
     <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
       <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
       <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
@@ -33,7 +33,55 @@ const INLINE_SVGS: Record<string, React.ReactElement> = {
       <line x1="30" y1="30" x2="170" y2="130" stroke="#E74C3C" strokeWidth="2.5" strokeLinecap="round" opacity="0.7" />
     </svg>
   ),
-  "no-data": (
+  "error:page_not_available": (
+    <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
+      <ellipse cx="100" cy="135" rx="75" ry="13" fill="#E5E5E5" />
+      <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
+      <polygon points="100,25 165,130 35,130" fill="#FDF3E3" stroke="#F39C12" strokeWidth="2" />
+      <rect x="96" y="65" width="8" height="35" rx="2" fill="#F39C12" />
+      <rect x="96" y="108" width="8" height="8" rx="2" fill="#F39C12" />
+    </svg>
+  ),
+  "no_data:desert": (
+    <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
+      <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
+      <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
+      <rect x="20" y="16" width="160" height="110" rx="8" fill="#FEF9EE" />
+      <path d="M20 110 Q55 85 90 95 Q130 110 180 90 L180 125 L20 125 Z" fill="#F5DEB3" />
+      <rect x="50" y="72" width="8" height="40" rx="3" fill="#6EAB6E" />
+      <rect x="40" y="82" width="18" height="7" rx="3" fill="#6EAB6E" />
+      <rect x="125" y="78" width="7" height="34" rx="3" fill="#6EAB6E" />
+      <rect x="120" y="88" width="15" height="6" rx="3" fill="#6EAB6E" />
+      <circle cx="148" cy="40" r="14" fill="#FCD34D" opacity="0.9" />
+    </svg>
+  ),
+  "no_data:open_road": (
+    <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
+      <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
+      <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
+      <rect x="20" y="16" width="160" height="110" rx="8" fill="#DBEAFE" />
+      <polygon points="65,120 82,68 118,68 135,120" fill="#D1D5DB" />
+      <rect x="97" y="72" width="6" height="12" rx="1" fill="white" opacity="0.7" />
+      <rect x="97" y="90" width="6" height="12" rx="1" fill="white" opacity="0.7" />
+      <ellipse cx="52" cy="48" rx="20" ry="10" fill="white" opacity="0.85" />
+      <ellipse cx="148" cy="52" rx="17" ry="9" fill="white" opacity="0.85" />
+    </svg>
+  ),
+  "info:going_camping": (
+    <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
+      <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
+      <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
+      <rect x="20" y="16" width="160" height="110" rx="8" fill="#EEF2FF" />
+      <polygon points="100,42 52,115 148,115" fill="#60A5FA" stroke="#3B82F6" strokeWidth="1.5" />
+      <polygon points="100,42 100,115 148,115" fill="#3B82F6" />
+      <polygon points="100,92 83,115 100,115" fill="#1D4ED8" opacity="0.6" />
+      <rect x="20" y="115" width="160" height="12" rx="3" fill="#A7F3D0" opacity="0.6" />
+      <circle cx="60" cy="36" r="2.5" fill="#FCD34D" />
+      <circle cx="140" cy="30" r="2" fill="#FCD34D" />
+      <circle cx="160" cy="48" r="1.5" fill="#FCD34D" />
+    </svg>
+  ),
+  "misc:no_content": (
     <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
       <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
       <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
@@ -45,25 +93,34 @@ const INLINE_SVGS: Record<string, React.ReactElement> = {
       <text x="100" y="53" textAnchor="middle" fill="#B0B0B0" fontSize="16" fontWeight="bold">?</text>
     </svg>
   ),
-  "error": (
+  "misc:gone_fishing": (
     <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
-      <ellipse cx="100" cy="135" rx="75" ry="13" fill="#E5E5E5" />
+      <ellipse cx="100" cy="130" rx="80" ry="14" fill="#E5E5E5" />
       <rect x="15" y="12" width="170" height="118" rx="10" fill="white" stroke="#E5E5E5" strokeWidth="1.5" />
-      <polygon points="100,25 165,130 35,130" fill="#FDF3E3" stroke="#F39C12" strokeWidth="2" />
-      <rect x="96" y="65" width="8" height="35" rx="2" fill="#F39C12" />
-      <rect x="96" y="108" width="8" height="8" rx="2" fill="#F39C12" />
+      <rect x="20" y="16" width="160" height="110" rx="8" fill="#DBEAFE" />
+      <ellipse cx="100" cy="105" rx="70" ry="16" fill="#BFDBFE" />
+      <path d="M115 78 Q125 64 135 72 Q145 82 125 88 Z" fill="#FCD34D" />
+      <path d="M125 88 Q135 91 128 98 Q115 94 115 78 Z" fill="#F59E0B" />
+      <path d="M55 54 L125 54" stroke="#92400E" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M125 54 Q130 54 130 60 L130 82" stroke="#92400E" strokeWidth="1.5" strokeLinecap="round" />
+      <circle cx="130" cy="85" r="3.5" fill="#60A5FA" />
+      <circle cx="67" cy="44" r="9" fill="#FDE68A" stroke="#F59E0B" strokeWidth="1.5" />
     </svg>
   ),
 };
 
 const SVG_MAP: Record<IllustrationType, string | null> = {
-  "empty-state-assistant": `${SLDS_ILLUS_PATH}/empty-state-assistant.svg`,
-  "empty-state-events":    `${SLDS_ILLUS_PATH}/empty-state-events.svg`,
-  "empty-state-tasks":     `${SLDS_ILLUS_PATH}/empty-state-tasks.svg`,
-  "no-access":             null,
-  "no-connection":         null,
-  "no-data":               null,
-  "error":                 null,
+  "empty-state-assistant":    `${SLDS_ILLUS_PATH}/empty-state-assistant.svg`,
+  "empty-state-events":       `${SLDS_ILLUS_PATH}/empty-state-events.svg`,
+  "empty-state-tasks":        `${SLDS_ILLUS_PATH}/empty-state-tasks.svg`,
+  "error:no_access":          null,
+  "error:no_connection":      null,
+  "error:page_not_available": null,
+  "no_data:desert":           null,
+  "no_data:open_road":        null,
+  "info:going_camping":       null,
+  "misc:no_content":          null,
+  "misc:gone_fishing":        null,
 };
 
 const SIZE_STYLES: Record<string, React.CSSProperties> = {

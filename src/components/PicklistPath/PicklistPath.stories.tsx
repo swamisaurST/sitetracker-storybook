@@ -29,7 +29,16 @@ const meta = {
           '<li>ARIA roles for accessibility (listbox + option)</li>' +
           '</ul>' +
           '<h4>Typical Usage</h4>' +
-          '<p>Used in Project Detail, Site Detail, and Service Appointment page layouts to show the <code>Project_Status__c</code> or <code>Status</code> field as a visual path.</p>',
+          '<p>Used in Project Detail, Site Detail, and Service Appointment page layouts to show picklist fields like <code>Project_Status__c</code> or <code>Status</code> as a visual path.</p>' +
+          '<h4>Real LWC API (sitetracker/strk@preprod)</h4>' +
+          '<p>The real <code>stPicklistPathLWC</code> is fully wire-driven — it calls Apex to load options and save changes. Our Storybook simulates the data with static props:</p>' +
+          '<ul>' +
+          '<li><code>recordId</code> + <code>picklistFieldApiName</code> → Apex fetches all picklist options. We simulate with our <code>options</code> array.</li>' +
+          '<li><code>allowEditing</code> — real prop name (we use <code>isEditable</code>)</li>' +
+          '<li><code>confirmationOptions</code> (array) — step values that trigger a confirmation modal before saving</li>' +
+          '<li><code>confirmationLabel</code>, <code>modalHeaderOverride</code></li>' +
+          '<li>Events: <code>stepselect</code> (step clicked), <code>stepsave</code> ({newvalue, oldvalue}) — not <code>onSelect</code></li>' +
+          '</ul>',
       },
     },
   },

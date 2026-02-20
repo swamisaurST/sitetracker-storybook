@@ -25,8 +25,16 @@ const meta = {
           '<li>Configurable label text</li>' +
           '<li>Single-user mode: shows name + date inline</li>' +
           '</ul>' +
-          '<h4>Notes</h4>' +
-          '<p>The LWC implementation fetches modifier history via a wire adapter. Storybook uses static mock data. In production, pass the result of a <code>getLastModifiers(recordId)</code> Apex call to the <code>users</code> prop.</p>',
+          '<h4>Real LWC API (sitetracker/strk@preprod)</h4>' +
+          '<p>The real component is wire-driven — it calls <code>getLastModifiedUsers(recordId, maxUsers)</code> Apex and renders the results. Our Storybook passes users as a static array instead:</p>' +
+          '<ul>' +
+          '<li><code>recordId</code> — Salesforce record ID. Wire fetches last modifiers automatically.</li>' +
+          '<li><code>maxUsers</code> (integer, default 3) — max users in the avatar group (we call it <code>maxVisible</code>)</li>' +
+          '<li><code>variant</code> (string) — "brand" or "brand-outline" (default). Controls avatar ring color.</li>' +
+          '<li><code>size</code> — "x-small" (default in the real component)</li>' +
+          '<li><code>refresh()</code> — public method to re-fetch modifier data</li>' +
+          '</ul>' +
+          '<p>The avatar renders user photos from Salesforce user records. Our React version uses <code>avatarUrl</code> or initials as a simulation.</p>',
       },
     },
   },

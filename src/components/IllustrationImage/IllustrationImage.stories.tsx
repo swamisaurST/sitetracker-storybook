@@ -87,8 +87,8 @@ export const EmptyTasks: Story = {
 };
 
 export const NoData: Story = {
-  name: "No Data (custom fallback)",
-  args: { type: "no-data", size: "medium", alt: "" },
+  name: "no_data:desert (custom fallback)",
+  args: { type: "no_data:desert", size: "medium", alt: "" },
   parameters: {
     docs: {
       description: {
@@ -102,8 +102,8 @@ export const NoData: Story = {
 };
 
 export const NoAccess: Story = {
-  name: "No Access (custom fallback)",
-  args: { type: "no-access", size: "medium", alt: "" },
+  name: "error:no_access (custom fallback)",
+  args: { type: "error:no_access", size: "medium", alt: "" },
   parameters: {
     docs: {
       description: {
@@ -174,7 +174,7 @@ export const AllVariants: Story = {
 
 export const AccessibleWithAlt: Story = {
   name: "With Accessible Alt Text",
-  args: { type: "no-access", size: "medium", alt: "You do not have permission to view this content" },
+  args: { type: "error:no_access", size: "medium", alt: "You do not have permission to view this content" },
   parameters: {
     docs: {
       description: { story: "When <code>alt</code> is provided, the image is accessible to screen readers." },

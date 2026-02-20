@@ -35,7 +35,18 @@ const meta = {
           '<li>Controlled value via <code>value</code> prop</li>' +
           '</ul>' +
           '<h4>Notes</h4>' +
-          '<p>This component is a presentation wrapper. Parent is responsible for maintaining selected state and handling the <code>onChange</code> callback.</p>',
+          '<p>This component is a presentation wrapper. Parent is responsible for maintaining selected state and handling the <code>onChange</code> callback.</p>' +
+          '<h4>Real LWC API (sitetracker/strk@preprod)</h4>' +
+          '<p>The actual <code>stRadioGroup</code> LWC does <strong>not</strong> have a button-group mode. Our Storybook adds that as a useful demo variant. Real props:</p>' +
+          '<ul>' +
+          '<li><code>label</code>, <code>value</code>, <code>options</code> ([{label, value, subLabel?}]), <code>orientation</code> — same as our React props ✅</li>' +
+          '<li><code>name</code> — unique group name (default: "stRadioGroup")</li>' +
+          '<li><code>labelHidden</code> (boolean) — hides the group label</li>' +
+          '<li><code>containerClass</code>, <code>boxClass</code> — SLDS class overrides for layout</li>' +
+          '<li><code>disabled</code> (boolean) — global disable</li>' +
+          '<li>Event: <code>change</code> dispatches <code>{detail: {value}}</code></li>' +
+          '<li>No <code>required</code> prop, no <code>type: "button"</code> mode in the real component</li>' +
+          '</ul>',
       },
     },
   },

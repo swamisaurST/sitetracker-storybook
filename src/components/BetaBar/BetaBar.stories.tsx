@@ -23,8 +23,15 @@ const meta = {
           '<li>Optional CTA link (label + href)</li>' +
           '<li>Accessible: <code>role="status"</code> with <code>aria-live="polite"</code></li>' +
           '</ul>' +
-          '<h4>Notes</h4>' +
-          '<p>The dismissed state is local — refreshing the page restores the bar. For persistent dismissal, persist the dismissed flag to localStorage or a user preference record in Salesforce via <code>onDismiss</code>.</p>',
+          '<h4>Real LWC API (sitetracker/strk@preprod)</h4>' +
+          '<p>The actual <code>stBetaBar</code> is simpler than our Storybook implementation. It has <strong>no variant system, no dismiss button, and no CTA link</strong>. Real props:</p>' +
+          '<ul>' +
+          '<li><code>text</code> (string) — the banner message. Falls back to the <code>Beta_Feature</code> custom label if empty.</li>' +
+          '<li><code>colorStyleOverride</code> (string) — inline style override for background. Default: <code>background-color: rgb(0,132,134)</code> (Sitetracker teal)</li>' +
+          '<li><code>borderStyleOverride</code> (string) — inline style override for border. Default: <code>border: 1px solid rgb(0,132,134)</code></li>' +
+          '<li><code>width</code> (string) — banner width. Default: "100%"</li>' +
+          '</ul>' +
+          '<p>Our Storybook version adds variant/dismiss/CTA features as a richer documentation demo. The real component is a simple styled banner bar with a fixed teal color.</p>',
       },
     },
   },
