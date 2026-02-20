@@ -1,0 +1,31 @@
+@import "@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.min.css";
+
+:root {
+  --st-header-bg: #f3f2f2;
+  --st-header-border: #dddbda;
+  --st-search-min-width: 16rem;
+  --st-search-max-width: 40rem;
+  --st-table-scroll-height: 32rem;
+
+  /* Dark palette tokens used by custom pages */
+  --dk-bg:          #0A1628;
+  --dk-surface:     #0D1E35;
+  --dk-card:        #112040;
+  --dk-card-hover:  #162B50;
+  --dk-border:      #1E3A6E;
+  --dk-border-soft: #152A52;
+  --dk-text:        #E4EDF8;
+  --dk-text-muted:  #6B87A8;
+  --dk-text-dim:    #3D5573;
+  --dk-accent:      #22A0F5;
+  --dk-accent-dim:  #0E4D80;
+  --dk-success:     #3FB868;
+  --dk-warning:     #FF9C2A;
+  --dk-navy:        #032D60;
+}
+
+body {
+  font-family: "Salesforce Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--dk-bg);
+}
