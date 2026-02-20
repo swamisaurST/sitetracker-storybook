@@ -31,24 +31,44 @@ interface CategoryProgress {
   built: number;
   phase: number;
   codaAnchor: string;
+  /** Storybook meta title for this category (e.g. "Categories/Data Display & Grid"). Used when built > 0 to link to category page. */
+  storyTitle?: string;
   note?: string;
 }
 
 const CATEGORIES: CategoryProgress[] = [
-  { name: "Data Display & Grid",    total: 8,  built: 6, phase: 1, codaAnchor: "Table-6_tu4NBnpr", note: "6 reusable · 2 domain-specific" },
-  { name: "Schedule & Timeline",    total: 7,  built: 0, phase: 2, codaAnchor: "suHonxkL" },
-  { name: "UI/UX Building Blocks",  total: 14, built: 8, phase: 2, codaAnchor: "suHonxkL" },
-  { name: "Financial & Budget",     total: 6,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
-  { name: "Inventory & Asset",      total: 5,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
-  { name: "Files",                  total: 4,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
-  { name: "Calendar & Scheduler",   total: 3,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
-  { name: "Approval & Workflow",    total: 4,  built: 0, phase: 4, codaAnchor: "suHonxkL" },
-  { name: "Production Tracking",    total: 3,  built: 0, phase: 4, codaAnchor: "suHonxkL" },
-  { name: "Trackers",               total: 4,  built: 0, phase: 4, codaAnchor: "suHonxkL" },
-  { name: "Map & GIS",              total: 7,  built: 0, phase: 4, codaAnchor: "suHonxkL" },
-  { name: "Maintenance",            total: 2,  built: 0, phase: 4, codaAnchor: "suHonxkL" },
-  { name: "Modules",                total: 8,  built: 0, phase: 4, codaAnchor: "suHonxkL" },
+  { name: "Data Display & Grid",    total: 8,  built: 6, phase: 1, codaAnchor: "Table-6_tu4NBnpr", storyTitle: "Categories/Data Display & Grid",    note: "6 reusable · 2 domain-specific" },
+  { name: "Schedule & Timeline",    total: 7,  built: 0, phase: 2, codaAnchor: "suHonxkL",        storyTitle: "Categories/Schedule & Timeline" },
+  { name: "UI/UX Building Blocks",  total: 14, built: 8, phase: 2, codaAnchor: "suHonxkL",        storyTitle: "Categories/UI · UX Building Blocks" },
+  { name: "Financial & Budget",     total: 6,  built: 0, phase: 3, codaAnchor: "suHonxkL",        storyTitle: "Categories/Financial & Budget" },
+  { name: "Inventory & Asset",      total: 5,  built: 0, phase: 3, codaAnchor: "suHonxkL",        storyTitle: "Categories/Inventory & Asset" },
+  { name: "Files",                  total: 4,  built: 0, phase: 3, codaAnchor: "suHonxkL",        storyTitle: "Categories/Files" },
+  { name: "Calendar & Scheduler",   total: 3,  built: 0, phase: 3, codaAnchor: "suHonxkL",        storyTitle: "Categories/Calendar & Scheduler" },
+  { name: "Approval & Workflow",    total: 4,  built: 0, phase: 4, codaAnchor: "suHonxkL",        storyTitle: "Categories/Approval & Workflow" },
+  { name: "Production Tracking",    total: 3,  built: 0, phase: 4, codaAnchor: "suHonxkL",        storyTitle: "Categories/Production Tracking" },
+  { name: "Trackers",               total: 4,  built: 0, phase: 4, codaAnchor: "suHonxkL",        storyTitle: "Categories/Trackers" },
+  { name: "Map & GIS",              total: 7,  built: 0, phase: 4, codaAnchor: "suHonxkL",        storyTitle: "Categories/Map & GIS" },
+  { name: "Maintenance",            total: 2,  built: 0, phase: 4, codaAnchor: "suHonxkL",        storyTitle: "Categories/Maintenance" },
+  { name: "Modules",                total: 8,  built: 0, phase: 4, codaAnchor: "suHonxkL",        storyTitle: "Categories/Modules" },
 ];
+
+function storyId(storyTitle: string): string {
+  return storyTitle
+    .toLowerCase()
+    .replace(/[&·]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function navigateToCategoryStory(storyTitle: string) {
+  const id = storyId(storyTitle);
+  const base = typeof window !== "undefined" && window.parent ? window.parent.location.pathname : "";
+  const query = `?path=/story/${id}--overview`;
+  if (typeof window !== "undefined" && window.parent) {
+    window.parent.location.href = base + query;
+  }
+}
 
 const totalComponents = CATEGORIES.reduce((s, c) => s + c.total, 0);
 const totalBuilt      = CATEGORIES.reduce((s, c) => s + c.built, 0);
@@ -241,6 +261,66 @@ const IntroductionPage: React.FC = () => (
                   const statusLabel = phaseOneDone ? "Phase 1 ✓" : cat.built === cat.total ? "Done" : cat.built > 0 ? "In Progress" : "Planned";
                   const statusColor = (phaseOneDone || cat.built === cat.total) ? T.success : cat.built > 0 ? T.accent : T.dim;
                   const statusBg    = (phaseOneDone || cat.built === cat.total) ? `${T.success}18` : cat.built > 0 ? `${T.accent}15` : `${T.border}40`;
+                  const isPlanned = cat.built === 0;
+                  const linkToStorybook = !isPlanned && cat.storyTitle;
+
+                  const rowStyle: React.CSSProperties = {
+                    display: "grid",
+                    gridTemplateColumns: "7px minmax(0, 1fr) 80px 56px 88px",
+                    alignItems: "center",
+                    gap: "0.75rem 1rem",
+                    padding: "0.6rem 1rem",
+                    borderTop: `1px solid ${T.borderSoft}`,
+                    textDecoration: "none",
+                    color: "inherit",
+                  };
+
+                  const content = (
+                    <>
+                      <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: statusColor }} />
+
+                      {/* Name + optional note inline, left of progress bar */}
+                      <span style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", minWidth: 0, overflow: "hidden" }}>
+                        <span style={{ fontSize: "0.83rem", fontWeight: 500, whiteSpace: "nowrap" }}>{cat.name}</span>
+                        {cat.note && (
+                          <span style={{ fontSize: "0.6rem", color: T.dim, whiteSpace: "nowrap", flexShrink: 0 }}>{cat.note}</span>
+                        )}
+                      </span>
+
+                      <div style={{ background: T.borderSoft, borderRadius: "999px", height: "4px", overflow: "hidden" }}>
+                        <div style={{ width: `${pct}%`, height: "100%", background: cat.built > 0 ? T.accent : T.dim, borderRadius: "999px" }} />
+                      </div>
+
+                      <span style={{ fontSize: "0.75rem", color: T.muted, textAlign: "right" }}>{cat.built}/{cat.total}</span>
+
+                      <span style={{
+                        fontSize: "0.63rem", padding: "0.15rem 0.5rem", borderRadius: "999px",
+                        fontWeight: 600, color: statusColor, background: statusBg,
+                        whiteSpace: "nowrap", justifySelf: "end",
+                      }}>
+                        {statusLabel}
+                      </span>
+                    </>
+                  );
+
+                  if (linkToStorybook) {
+                    return (
+                      <a
+                        key={cat.name}
+                        href="#"
+                        style={rowStyle}
+                        onMouseEnter={(e) => (e.currentTarget.style.background = T.card)}
+                        onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigateToCategoryStory(cat.storyTitle!);
+                        }}
+                        title="Open in Storybook"
+                      >
+                        {content}
+                      </a>
+                    );
+                  }
 
                   return (
                     <a
@@ -248,42 +328,11 @@ const IntroductionPage: React.FC = () => (
                       href={codaHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{
-                        display: "flex", alignItems: "center",
-                        padding: "0.6rem 1rem",
-                        borderTop: `1px solid ${T.borderSoft}`,
-                        gap: "1rem",
-                        textDecoration: "none", color: "inherit",
-                      }}
+                      style={rowStyle}
                       onMouseEnter={(e) => (e.currentTarget.style.background = T.card)}
                       onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                     >
-                      <span style={{ width: "7px", height: "7px", borderRadius: "50%", flexShrink: 0, background: statusColor }} />
-                      <span style={{ fontSize: "0.83rem", fontWeight: 500, flex: 1 }}>{cat.name}</span>
-
-                      {/* mini bar */}
-                      <div style={{ width: "72px", background: T.borderSoft, borderRadius: "999px", height: "4px", overflow: "hidden", flexShrink: 0 }}>
-                        <div style={{ width: `${pct}%`, height: "100%", background: cat.built > 0 ? T.accent : T.dim, borderRadius: "999px" }} />
-                      </div>
-
-                      <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", flexShrink: 0 }}>
-                        <span style={{ fontSize: "0.75rem", color: T.muted }}>
-                          {cat.built}/{cat.total}
-                        </span>
-                        {cat.note && (
-                          <span style={{ fontSize: "0.6rem", color: T.dim, whiteSpace: "nowrap" }}>
-                            {cat.note}
-                          </span>
-                        )}
-                      </div>
-
-                      <span style={{
-                        fontSize: "0.63rem", padding: "0.15rem 0.5rem", borderRadius: "999px",
-                        fontWeight: 600, color: statusColor, background: statusBg,
-                        flexShrink: 0, whiteSpace: "nowrap",
-                      }}>
-                        {statusLabel}
-                      </span>
+                      {content}
                     </a>
                   );
                 })}
