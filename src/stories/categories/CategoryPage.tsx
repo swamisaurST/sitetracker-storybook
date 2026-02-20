@@ -38,14 +38,23 @@ export interface CategoryComponent {
   pattern?: string;
 }
 
-function storyUrl(storyPath: string, storySlug = "default"): string {
-  const id = storyPath
+function storyId(storyPath: string): string {
+  return storyPath
     .toLowerCase()
     .replace(/[&·]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "");
-  return `/?path=/story/${id}--${storySlug}`;
+}
+
+// Navigate the Storybook shell (parent window) to a story.
+// Using window.parent.location ensures the link works in both local dev
+// (localhost:6006) and on GitHub Pages (/sitetracker-storybook/) without
+// hard-coding the base path.
+function navigateToStory(storyPath: string, storySlug = "default") {
+  const id = storyId(storyPath);
+  const base = window.parent.location.pathname;
+  window.parent.location.href = `${base}?path=/story/${id}--${storySlug}`;
 }
 
 export interface CategoryPageProps {
@@ -150,7 +159,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
         <div style={{ border: `1px solid ${T.border}`, borderRadius: "8px", overflow: "hidden" }}>
           {/* Column headers */}
           <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1.6fr 72px 110px",
+            display: "grid", gridTemplateColumns: "1fr 1.6fr 60px 120px",
             padding: "0.5rem 1rem",
             background: T.surface,
             fontSize: "0.66rem", fontWeight: 700, color: T.dim,
@@ -169,7 +178,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
               <div
                 key={comp.name}
                 style={{
-                  display: "grid", gridTemplateColumns: "1fr 1.6fr 72px 110px",
+                  display: "grid", gridTemplateColumns: "1fr 1.6fr 60px 120px",
                   padding: "0.9rem 1rem",
                   borderTop: `1px solid ${T.borderSoft}`,
                   alignItems: "start", gap: "0.5rem",
@@ -181,8 +190,10 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                 {/* Name column */}
                 <div>
                   {comp.storyPath ? (
-                    <a href={storyUrl(comp.storyPath, comp.storySlug)}
-                      style={{ fontWeight: 600, fontSize: "0.82rem", color: T.accent, marginBottom: "0.2rem", display: "block", textDecoration: "none" }}>
+                    <a
+                      href="#"
+                      onClick={(e) => { e.preventDefault(); navigateToStory(comp.storyPath!, comp.storySlug); }}
+                      style={{ fontWeight: 600, fontSize: "0.82rem", color: T.accent, marginBottom: "0.2rem", display: "block", textDecoration: "none", cursor: "pointer" }}>
                       {comp.label} →
                     </a>
                   ) : (
@@ -214,10 +225,11 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                 {/* Status badge */}
                 <div style={{ textAlign: "center", paddingTop: "2px" }}>
                   <span style={{
-                    display: "inline-flex", alignItems: "center", gap: "0.3rem",
-                    fontSize: "0.67rem", fontWeight: 600,
+                    display: "inline-flex", alignItems: "center", gap: "0.25rem",
+                    fontSize: "0.63rem", fontWeight: 600,
                     color: s.color, background: s.bg,
-                    padding: "0.2rem 0.6rem", borderRadius: "999px",
+                    padding: "0.18rem 0.5rem", borderRadius: "999px",
+                    whiteSpace: "nowrap",
                   }}>
                     <span style={{ width: "5px", height: "5px", borderRadius: "50%", background: s.dot, flexShrink: 0 }} />
                     {s.label}

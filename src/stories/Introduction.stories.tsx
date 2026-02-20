@@ -37,7 +37,7 @@ interface CategoryProgress {
 const CATEGORIES: CategoryProgress[] = [
   { name: "Data Display & Grid",    total: 8,  built: 6, phase: 1, codaAnchor: "Table-6_tu4NBnpr", note: "6 reusable · 2 domain-specific" },
   { name: "Schedule & Timeline",    total: 7,  built: 0, phase: 2, codaAnchor: "suHonxkL" },
-  { name: "UI/UX Building Blocks",  total: 14, built: 8, phase: 2, codaAnchor: "suHonxkL", note: "8 built · 6 planned" },
+  { name: "UI/UX Building Blocks",  total: 14, built: 8, phase: 2, codaAnchor: "suHonxkL" },
   { name: "Financial & Budget",     total: 6,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
   { name: "Inventory & Asset",      total: 5,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
   { name: "Files",                  total: 4,  built: 0, phase: 3, codaAnchor: "suHonxkL" },
@@ -278,8 +278,9 @@ const IntroductionPage: React.FC = () => (
                       </div>
 
                       <span style={{
-                        fontSize: "0.66rem", padding: "0.15rem 0.5rem", borderRadius: "999px",
-                        fontWeight: 600, color: statusColor, background: statusBg, flexShrink: 0,
+                        fontSize: "0.63rem", padding: "0.15rem 0.5rem", borderRadius: "999px",
+                        fontWeight: 600, color: statusColor, background: statusBg,
+                        flexShrink: 0, whiteSpace: "nowrap",
                       }}>
                         {statusLabel}
                       </span>
